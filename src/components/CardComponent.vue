@@ -1,6 +1,6 @@
 <template>
   <div class="card-component">
-    <div class="card">
+    <div class="card" @click="showSingle(item.id)">
       <div class="image">
         <img :src="item.thumbnail" alt="image">
       </div>
@@ -19,7 +19,12 @@
 <script>
 export default {
   name: "CardComponent",
-  props: ['item']
+  props: ['item'],
+  methods: {
+    showSingle(id) {
+      this.$router.push(`/single/${id}`);
+    }
+  }
 }
 </script>
 
