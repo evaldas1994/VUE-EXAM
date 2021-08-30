@@ -2,6 +2,7 @@
   <div id="app">
     <div id="nav">
       <router-link to="/">Home</router-link> |
+      <router-link to="/sort">Sort</router-link>
     </div>
 
     <router-view/>
@@ -22,7 +23,7 @@ body {
   font-family: 'Jura', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  color: #2c3e50;
+  color: #494949;
   position: relative;
 }
 
@@ -35,12 +36,14 @@ body {
 }
 
 #nav a {
-  color: #2c3e50;
+  color: silver;
   text-decoration: none;
+  padding: 0 10px;
 }
 
 #nav a.router-link-exact-active {
   color: silver;
+  font-weight: bold;
 }
 
 .my-page {
