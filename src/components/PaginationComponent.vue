@@ -1,32 +1,8 @@
 <template>
 <div class="pagination-component">
   <div class="pages">
-    <div class="page">
-      <p><i class="fas fa-caret-left"></i></p>
-    </div>
-
-    <div class="page">
-      <p>1</p>
-    </div>
-
-    <div class="page">
-      <p>2</p>
-    </div>
-
-    <div class="page">
-      <p>3</p>
-    </div>
-
-    <div class="page">
-      <p>4</p>
-    </div>
-
-    <div class="page">
-      <p>5</p>
-    </div>
-
-    <div class="page">
-      <p><i class="fas fa-caret-right"></i></p>
+    <div class="page" v-for="(item, index) in pageNumbers" :key="index">
+      <p @click="changePage(item)">{{item}}</p>
     </div>
   </div>
 </div>
@@ -34,7 +10,13 @@
 
 <script>
 export default {
-  name: "PaginationComponent"
+  name: "PaginationComponent",
+  props: ['pageNumbers'],
+  methods: {
+    changePage(page) {
+      this.$store.commit('changePage', page);
+    }
+  }
 }
 </script>
 

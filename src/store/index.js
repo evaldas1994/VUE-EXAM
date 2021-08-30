@@ -5,11 +5,15 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
-    giveAways: null
+    giveAways: null,
+    page: 1
   },
   mutations: {
     setGiveAways(state, giveAways) {
       state.giveAways = giveAways;
+    },
+    changePage(state, page) {
+      state.page = page;
     }
   },
   actions: {
