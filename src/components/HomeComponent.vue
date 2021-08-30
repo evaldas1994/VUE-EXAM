@@ -1,23 +1,26 @@
 <template>
-<div class="page home-component cards">
-  <div
-      v-for="item in giveAways"
-      :key="item.id"
-  >
-    <CardComponent
-        :item="item"
-    />
+<div class="page home-component">
+  <div class="pagination">
+    <PaginationComponent/>
+  </div>
+
+  <div class="cards">
+  <div v-for="item in giveAways" :key="item.id">
+    <CardComponent :item="item"/>
+  </div>
   </div>
 </div>
 </template>
 
 <script>
 import CardComponent from "./CardComponent";
+import PaginationComponent from "./PaginationComponent";
 
 export default {
   name: "HomeComponent",
   components: {
-    CardComponent
+    CardComponent,
+    PaginationComponent
   },
   beforeCreate() {
     this.$store.dispatch('getAllData');
@@ -38,6 +41,16 @@ export default {
 <style scoped>
 .page {
   min-height: calc(100vh - 51px - 51px);
+}
+
+.home-component {
+  display: flex;
+  flex-direction: column;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
 }
 
 .cards {

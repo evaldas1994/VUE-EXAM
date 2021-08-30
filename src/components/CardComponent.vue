@@ -33,6 +33,7 @@ export default {
   color: silver;
   border: 1px solid white;
   margin: 10px;
+  cursor: pointer;
 }
 
 .image {
