@@ -9,6 +9,10 @@
       <CardComponent :item="item"/>
     </div>
   </div>
+
+  <div class="pagination">
+    <PaginationComponent :pageNumbers="getNumberOfPage()"/>
+  </div>
 </div>
 </template>
 

@@ -2,7 +2,7 @@
 <div class="pagination-component">
   <div class="pages">
     <div class="page" v-for="(item, index) in pageNumbers" :key="index">
-      <p @click="changePage(item)">{{item}}</p>
+      <p :class="(page === item) ? 'active' : ''" @click="changePage(item)">{{item}}</p>
     </div>
   </div>
 </div>
@@ -15,6 +15,11 @@ export default {
   methods: {
     changePage(page) {
       this.$store.commit('changePage', page);
+    }
+  },
+  computed: {
+    page() {
+      return this.$store.state.page;
     }
   }
 }
@@ -41,5 +46,11 @@ p {
   color: silver;
   border: 1px solid white;
   border-collapse: collapse;
+}
+
+.active {
+  font-weight: bold;
+  color: white;
+  background: #525151;
 }
 </style>
