@@ -1,5 +1,5 @@
 <template>
-<div class="page home-component">
+<div class="my-page home-component">
   <div class="pagination">
     <PaginationComponent :pageNumbers="getNumberOfPage()"/>
   </div>
@@ -59,10 +59,6 @@ export default {
 </script>
 
 <style scoped>
-.page {
-  min-height: calc(100vh - 51px - 51px);
-}
-
 .home-component {
   display: flex;
   flex-direction: column;

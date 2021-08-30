@@ -43,6 +43,10 @@ body {
   color: silver;
 }
 
+.my-page {
+  min-height: calc(100vh - 51px - 51px);
+}
+
 .footer {
   display: flex;
   justify-content: center;

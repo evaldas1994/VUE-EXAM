@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     giveAways: null,
-    page: 1
+    page: 1,
+    oneItem: null
   },
   mutations: {
     setGiveAways(state, giveAways) {
@@ -14,6 +15,9 @@ export default new Vuex.Store({
     },
     changePage(state, page) {
       state.page = page;
+    },
+    setOneItem(state, item) {
+      state.oneItem = item;
     }
   },
   actions: {
@@ -22,7 +26,14 @@ export default new Vuex.Store({
       const data = await  res.json();
 
       context.commit('setGiveAways', data);
-    }
+    },
+
+    async getDataById(context, id) {
+      const res = await  fetch(`http://167.99.138.67:4545/giveaways/id/${id}`);
+      const data = await  res.json();
+
+      context.commit('setOneItem', data);
+    },
   },
   modules: {
   }
