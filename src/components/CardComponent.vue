@@ -10,7 +10,7 @@
       </div>
 
       <div class="price">
-        <p>{{ item.worth }}</p>
+        <p :class="getPrice(item.worth).class">{{ getPrice(item.worth).value  }}</p>
       </div>
     </div>
   </div>
@@ -23,6 +23,15 @@ export default {
   methods: {
     showSingle(id) {
       this.$router.push(`/single/${id}`);
+    },
+    getPrice(price) {
+      if (price === 'N/A') {
+        return { isFree: true, value: 'free', class:'green'};
+      } else if (parseInt(price.substring(1)) > 10){
+        return { isFree: false, value: price, class: 'yellow'};
+      } else {
+        return { isFree: false, value: price, class: 'green'};
+      }
     }
   }
 }
@@ -70,5 +79,15 @@ h3, p {
   width: 100%;
   display: flex;
   justify-content: flex-end;
+  font-weight: bold;
+  text-shadow: -1px -1px 4px rgba(255, 255, 255, 0.5);
+}
+
+.green {
+  color: #01c201;
+}
+
+.yellow {
+  color: yellow;
 }
 </style>
