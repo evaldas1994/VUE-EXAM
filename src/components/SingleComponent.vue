@@ -23,7 +23,7 @@
 
     <div class="others">
       <div class="other price">
-        <i class="fas fa-coins"></i>{{ item.worth }}
+        <i class="fas fa-coins"></i>{{ getPrice(item.worth) }}
       </div>
 
       <a :href="item.open_giveaway_url">
@@ -78,6 +78,9 @@ export default {
       } else {
         return '';
       }
+    },
+    getPrice(price) {
+      return  (price === 'N/A') ? 'free' : price;
     }
   },
   created() {
