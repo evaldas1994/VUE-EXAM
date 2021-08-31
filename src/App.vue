@@ -44,6 +44,7 @@ body {
 #nav a.router-link-exact-active {
   color: silver;
   font-weight: bold;
+  text-shadow: -1px -1px 4px rgba(255, 255, 255, 0.5);
 }
 
 .my-page {
@@ -65,5 +66,22 @@ body {
 .footer p {
   margin: 0;
   padding: 1em 0;
+}
+
+.active {
+  color: white;
+  background: #313131;
+  text-shadow: -1px -1px 4px rgba(255, 255, 255, 1);
+}
+
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
 }
 </style>

@@ -49,12 +49,6 @@ export default {
     page() {
       return this.$store.state.page;
     }
-  },
-  watch: {
-    giveAways(newValue) {
-      this.getAllPlatforms(newValue);
-      this.getAllTypes(newValue);
-    }
   }
 }
 </script>
@@ -63,16 +57,5 @@ export default {
 .home-component {
   display: flex;
   flex-direction: column;
-}
-
-.pagination {
-  display: flex;
-  justify-content: center;
-}
-
-.cards {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
 }
 </style>

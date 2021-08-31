@@ -21,12 +21,12 @@ const routes = [
     path: '/sort',
     name: 'Sort',
     component: SortComponent
-  },
-  {
-    path: '/sort/:platform/:type/:sortBy',
-    name: 'Sort',
-    component: SortComponent
   }
+  // {
+  //   path: '/sort/:platform/:type/:sortBy',
+  //   name: 'Sort',
+  //   component: SortComponent
+  // }
 ]
 
 const router = new VueRouter({

@@ -48,9 +48,4 @@ p {
   border-collapse: collapse;
 }
 
-.active {
-  font-weight: bold;
-  color: white;
-  background: #525151;
-}
 </style>
