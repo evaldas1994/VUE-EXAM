@@ -23,7 +23,7 @@ const routes = [
     component: SortComponent
   },
   {
-    path: '/sort/:platform/:type/sortBy',
+    path: '/sort/:platform/:type/:sortBy',
     name: 'Sort',
     component: SortComponent
   }

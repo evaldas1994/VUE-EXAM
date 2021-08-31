@@ -5,9 +5,17 @@ Vue.use(Vuex)
 
 export default new Vuex.Store({
   state: {
+    perPage: 10,
     giveAways: null,
     page: 1,
-    oneItem: null
+    oneItem: null,
+    allPlatforms: null,
+    allTypes: null,
+    allSortBy: [
+      { sortBy: 'Date' },
+      { sortBy: 'Value' },
+      { sortBy: 'Popularity' }
+    ]
   },
   mutations: {
     setGiveAways(state, giveAways) {
@@ -18,6 +26,12 @@ export default new Vuex.Store({
     },
     setOneItem(state, item) {
       state.oneItem = item;
+    },
+    setAllTypes(state, types) {
+      state.allTypes = types;
+    },
+    setAllPlatforms(state, platforms) {
+      state.allPlatforms = platforms;
     }
   },
   actions: {
@@ -34,6 +48,7 @@ export default new Vuex.Store({
 
       context.commit('setOneItem', data);
     },
+
   },
   modules: {
   }
