@@ -1,7 +1,7 @@
 <template>
   <div class="filter-component">
     <div class="platforms">
-      <div class="platform" v-for="(item, index) in allPlatforms" :key="index">
+      <div class="platform" v-for="(item, index) in platforms" :key="index">
         <p>{{ item.platform }}</p>
       </div>
     </div>
@@ -23,12 +23,10 @@
 <script>
 export default {
   name: "FilterComponent",
-  data: () => {
-    return {
-      allPlatforms: [],
-    }
-  },
   computed: {
+    giveAways() {
+      return this.$store.state.giveAways;
+    },
     platforms() {
       return this.$store.state.allPlatforms;
     },
@@ -40,22 +38,13 @@ export default {
     }
   },
   watch: {
-    platforms(newValue) {
-      this.allPlatforms = newValue;
-      console('watch')
+    giveAways() {
+      this.$store.dispatch('getAllPlatforms');
+      this.$store.dispatch('getAllTypes');
     }
   },
   beforeCreate() {
     this.$store.dispatch('getAllData');
-    console.log('begoreCreate')
-  },
-  created() {
-    this.allPlatforms = this.$store.state.allPlatforms;
-    console.log('created')
-  },
-  beforeDestroy() {
-    this.$store.commit('setAllPlatforms', null);
-    console.log('before destroy')
   }
 }
 </script>
@@ -64,6 +53,7 @@ export default {
 .platforms, .types, .sort-by {
   display: flex;
   flex-wrap: wrap;
+  margin-top: 20px;
 }
 
 .platform, .type, .sort {

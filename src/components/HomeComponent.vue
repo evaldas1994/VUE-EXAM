@@ -34,39 +34,6 @@ export default {
     getNumberOfPage() {
       return Math.ceil(this.giveAways.length / this.perPage);
     },
-
-    getAllPlatforms(data) {
-      let allPlatforms = [];
-
-      data.forEach(e => {
-        let platforms = e.platforms.split(', ');
-
-        platforms.forEach(el => {
-          if (allPlatforms.some(x => x.platform === el)) {
-            console.log('found');
-          } else {
-            allPlatforms.push({platform: el});
-          }
-        })
-      })
-
-      this.$store.commit('setAllPlatforms', allPlatforms);
-    },
-
-    getAllTypes(data) {
-      let allTypes = [];
-
-      data.forEach(e => {
-        if (allTypes.some(x => x.type === e.type)) {
-          console.log('found type');
-        } else {
-          allTypes.push({type: e.type});
-        }
-      })
-
-      this.$store.commit('setAllTypes', allTypes);
-    }
-
   },
   components: {
     CardComponent,
