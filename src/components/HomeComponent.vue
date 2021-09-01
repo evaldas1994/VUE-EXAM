@@ -22,11 +22,6 @@ import PaginationComponent from "./PaginationComponent";
 
 export default {
   name: "HomeComponent",
-  data: () => {
-    return {
-      perPage: 10
-    }
-  },
   methods: {
     getPaginatedData() {
       if (this.giveAways !== null) {
@@ -52,6 +47,9 @@ export default {
     },
     page() {
       return this.$store.state.page;
+    },
+    perPage() {
+      return this.$store.state.perPage;
     }
   }
 }
