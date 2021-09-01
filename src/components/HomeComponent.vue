@@ -29,10 +29,14 @@ export default {
   },
   methods: {
     getPaginatedData() {
-      return this.giveAways.slice((this.page * this.perPage) - this.perPage, this.page * this.perPage);
+      if (this.giveAways !== null) {
+        return this.giveAways.slice((this.page * this.perPage) - this.perPage, this.page * this.perPage);
+      }
     },
     getNumberOfPage() {
-      return Math.ceil(this.giveAways.length / this.perPage);
+      if (this.giveAways !== null) {
+        return Math.ceil(this.giveAways.length / this.perPage);
+      }
     },
   },
   components: {

@@ -54,14 +54,7 @@ export default new Vuex.Store({
     setOneItem(state, item) {
       state.oneItem = item;
     },
-    setAllTypes(state, types) {
-      state.allTypes = types;
-    },
-    setAllPlatforms(state, platforms) {
-      state.allPlatforms = platforms;
-    },
     setPlatform(state, platform) {
-      console.log('clicked', platform);
       state.platform = platform;
     },
     setType(state, type) {
@@ -90,8 +83,6 @@ export default new Vuex.Store({
       const res = await  fetch(`http://167.99.138.67:4545/giveaways/sort/${context.state.platform}/${context.state.type}/${context.state.sort}`);
       const data = await  res.json();
 
-      console.log('type is: ', context.state.type)
-      console.log(data)
       context.commit('setSortedGiveAways', data);
     },
   },

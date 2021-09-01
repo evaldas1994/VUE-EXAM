@@ -1,71 +1,75 @@
 <template>
-<div class="my-page single-component">
-  <div class="container">
-    <div class="title">
-      <h2>{{ item.title }}{{ getYear(item.end_date) }}</h2>
+  <div class="my-page single-component">
+    <div class="container" v-if="item">
+      <div class="title">
+        <h2>{{ item.title }}{{ getYear(item.end_date) }}</h2>
+      </div>
+
+      <div class="about">
+        <div class="image">
+          <img :src="item.thumbnail" alt="image">
+        </div>
+
+        <div class="info">
+          <div class="description">
+            {{ item.description }}
+          </div>
+
+          <div class="instructions">
+            {{ item.instructions }}
+          </div>
+        </div>
+      </div>
+
+      <div class="others">
+        <div class="other price">
+          <i class="fas fa-coins"></i>{{ getPrice(item.worth) }}
+        </div>
+
+        <a :href="item.open_giveaway_url">
+          <div class="other open-link">
+            <i class="fas fa-download"></i>
+          </div>
+        </a>
+
+        <div class="other type">
+          {{ item.type }}
+        </div>
+
+        <div class="other users">
+          <i class="fas fa-users"></i>{{ item.users }}
+        </div>
+
+        <div class="other status">
+          <i class="fas fa-check"></i>{{ item.status }}
+        </div>
+
+        <a :href="item.gamerpower_url">
+          <div class="other url">
+            <i class="fas fa-info"></i>
+          </div>
+        </a>
+      </div>
+
+      <div class="platforms">
+        <div class="platform">
+          Windows
+        </div>
+
+        <div class="platform">
+          Linux
+        </div>
+
+        <div class="platform">
+          PS4
+        </div>
+      </div>
     </div>
 
-    <div class="about">
-      <div class="image">
-        <img :src="item.thumbnail" alt="image">
-      </div>
-
-      <div class="info">
-        <div class="description">
-          {{ item.description}}
-        </div>
-
-        <div class="instructions">
-          {{ item.instructions}}
-        </div>
-      </div>
-    </div>
-
-    <div class="others">
-      <div class="other price">
-        <i class="fas fa-coins"></i>{{ getPrice(item.worth) }}
-      </div>
-
-      <a :href="item.open_giveaway_url">
-        <div class="other open-link">
-          <i class="fas fa-download"></i>
-        </div>
-      </a>
-
-      <div class="other type">
-        {{ item.type }}
-      </div>
-
-      <div class="other users">
-        <i class="fas fa-users"></i>{{ item.users }}
-      </div>
-
-      <div class="other status">
-        <i class="fas fa-check"></i>{{ item.status }}
-      </div>
-
-      <a :href="item.gamerpower_url">
-        <div class="other url">
-          <i class="fas fa-info"></i>
-        </div>
-      </a>
-    </div>
-
-    <div class="platforms">
-      <div class="platform">
-        Windows
-      </div>
-
-      <div class="platform">
-        Linux
-      </div>
-
-      <div class="platform">
-        PS4
-      </div>
+    <div class="container" v-else>
+      <h2>Record Not Found</h2>
     </div>
   </div>
-</div>
 </template>
 
 <script>
@@ -74,13 +78,13 @@ export default {
   methods: {
     getYear(date) {
       if (date !== 'N/A') {
-        return '('+ parseInt(date) + ')';
+        return '(' + parseInt(date) + ')';
       } else {
         return '';
       }
     },
     getPrice(price) {
-      return  (price === 'N/A') ? 'free' : price;
+      return (price === 'N/A') ? 'free' : price;
     }
   },
   created() {

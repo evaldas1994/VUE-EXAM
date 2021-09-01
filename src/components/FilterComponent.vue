@@ -31,10 +31,14 @@
       <PaginationComponent :pageNumbers="getNumberOfPage()"/>
     </div>
 
-    <div class="cards">
+    <div class="cards" v-if="sortedGiveAways.length > 0">
       <div v-for="(item, index) in getPaginatedData()" :key="index">
         <CardComponent :item="item"/>
       </div>
+    </div>
+
+    <div class="cards" v-else>
+      <h2>Record Not Found</h2>
     </div>
 
     <div class="pagination">
@@ -69,14 +73,23 @@ export default {
     },
     checkIsSortAttributesValid() {
       if (this.platform !== null && this.type !== null && this.sort !== null) {
+        this.$store.commit('changePage', 1);
         this.$store.dispatch('getSortedData');
       }
     },
     getPaginatedData() {
-      return this.sortedGiveAways.slice((this.page * this.perPage) - this.perPage, this.page * this.perPage);
+      if (this.sortedGiveAways !== null && this.sortedGiveAways.status !== 0) {
+        return this.sortedGiveAways.slice((this.page * this.perPage) - this.perPage, this.page * this.perPage);
+      } else {
+        return [];
+      }
     },
     getNumberOfPage() {
-      return Math.ceil(this.sortedGiveAways.length / this.perPage);
+      if (this.sortedGiveAways !== null && this.sortedGiveAways.status !== 0) {
+        return Math.ceil(this.sortedGiveAways.length / this.perPage);
+      } else {
+        return 0;
+      }
     },
   },
   computed: {
